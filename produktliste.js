@@ -8,6 +8,7 @@ function showProducts(products) {
 }
 
 function showProduct(product) {
+  console.log(product);
   //fang template
   const template = document.querySelector("#smallProductTemplate").content;
   //lav en kopi
@@ -18,6 +19,7 @@ function showProduct(product) {
     //produktet er udsolgt
     copy.querySelector("article").classList.add("soldOut");
   }
+  copy.querySelector(".read-more").setAttribute("href", `produkt.html?id=${product.id}`);
   //appende
   document.querySelector("main").appendChild(copy);
 }
