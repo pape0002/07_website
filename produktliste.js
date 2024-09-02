@@ -19,6 +19,7 @@ function showProduct(product) {
     //produktet er udsolgt
     copy.querySelector("article").classList.add("soldOut");
   }
+
   copy.querySelector(".read-more").setAttribute("href", `produkt.html?id=${product.id}`);
   //appende
   document.querySelector("main").appendChild(copy);
@@ -53,4 +54,15 @@ function showProduct(product) {
   "brandname": "Nike",
   "soldout": 0
 }
+*/
+
+/*
+  if (product.soldout) {
+    //produktet er udsolgt
+    copy.querySelector("article").classList.add("soldOut");
+  } else if (product.discount) {
+    copy.querySelector("article").classList.add("onSale");
+  } else {
+    copy.querySelector("article").classList.add("soldOut", "onSale");
+  }
 */
