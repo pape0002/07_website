@@ -1,0 +1,151 @@
+.logotype {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.kategoriliste {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.kategoriliste a {
+  text-decoration: none;
+  padding: 2em;
+  color: white;
+  background-color: blueviolet;
+}
+
+.kategoriliste a:hover {
+  background-color: var(--text-decoration-color-hover);
+  color: var(--color);
+}
+
+/*produktliste*/
+.produktliste main {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 290px));
+  gap: 2rem;
+}
+.produktliste main h2 {
+  grid-column: 1/-1;
+}
+.produktliste article h3 {
+  font-size: 1.3rem;
+  flex-grow: 3;
+}
+.produktliste article > * {
+  margin: 0;
+  font-size: 1rem;
+}
+.subtle {
+  color: var(--color);
+}
+.produktliste article {
+  display: flex;
+  flex-direction: column;
+}
+.produktliste article.soldOut img {
+  opacity: 0.5;
+}
+.produktliste article.soldOut::before {
+  content: "Sold Out";
+  position: absolute;
+  background: grey;
+  color: white;
+  padding: 1rem;
+}
+.produktliste article .discounted,
+.produktliste article .price span {
+  display: none;
+}
+.produktliste article.onSale .discounted {
+  display: flex;
+  justify-content: space-between;
+}
+.discounted > p {
+  margin-bottom: 0;
+}
+.produktliste article.onSale .price span {
+  display: initial;
+}
+.produktliste article button {
+  margin-top: auto;
+}
+.produktliste article {
+  margin-bottom: 1rem;
+}
+.discounted p:last-child {
+  background: blueviolet;
+  padding: 0.2rem;
+  color: white;
+}
+
+/*Product*/
+.breadcrumbs {
+  display: none;
+}
+
+.purchaseBox {
+  background: blueviolet;
+  color: white;
+  padding: 1rem;
+}
+.info {
+  font-size: 1.5rem;
+}
+.product select {
+  min-width: 100px;
+}
+.product main {
+  display: grid;
+}
+.product main .breadcrumbs,
+.product main img {
+  grid-column: 1/-1;
+}
+.purchaseBox form label {
+  gap: 1rem;
+}
+.purchaseBox button {
+  display: block;
+  margin-top: 1rem;
+  width: 100%;
+}
+dt {
+  font-weight: 700;
+}
+@media screen and (min-width: 900px) {
+  .product main {
+    grid-template-columns: 1fr 310px;
+  }
+  .info {
+    order: 0;
+  }
+  .purchaseBox {
+    order: 2;
+    transform: translate(-50px, -100px);
+  }
+
+  .breadcrumbs {
+    display: flex;
+    font-size: 1.5rem;
+    list-style-type: none;
+  }
+
+  .breadcrumbs li::after {
+    content: " > ";
+    font-size: 0.6rem;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 10px;
+    transition: all 0.3s;
+  }
+
+  .breadcrumbs li:last-child::after {
+    background: none;
+    content: "";
+  }
+}
