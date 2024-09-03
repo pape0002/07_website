@@ -13,31 +13,31 @@ function showProduct(product) {
   const template = document.querySelector("#smallProductTemplate").content;
   //lav en kopi
   const copy = template.cloneNode(true);
+  const imgurl = `https://kea-alt-del.dk/t7/images/webp/640/${product.id}.webp`;
   //ændre indhold
+  copy.querySelector("img").src = imgurl;
+  copy.querySelector("img").alt = product.productdisplayname;
   copy.querySelector("h3").textContent = product.productdisplayname;
+  copy.querySelector(".articletype").textContent = product.articletype;
+  copy.querySelector(".brand").textContent = product.brandname;
+  copy.querySelector(".price").textContent = product.price + ",-";
+  copy.querySelector(".discounted p").textContent = "-" + product.discount + "%";
+  copy.querySelector(".read-more").setAttribute("href", `produkt.html?id=${product.id}`);
+
+  //produkt er udsolgt
   if (product.soldout) {
-    //produktet er udsolgt
     copy.querySelector("article").classList.add("soldOut");
   }
 
-  copy.querySelector(".read-more").setAttribute("href", `produkt.html?id=${product.id}`);
+  if (product.discount) {
+    copy.querySelector("article").classList.add("onSale");
+    // copy.querySelector(".discounted p").textContent = Math.round(product.price - (product.price * product.discount) / 100);
+  }
+
   //appende
   document.querySelector("main").appendChild(copy);
 }
-/*
-    <article class="smallProduct">
-    <img src="https://kea-alt-del.dk/t7/images/webp/640/1163.webp"
-    alt="Sahara Team India Fanwear Round Neck Jersey">
-    <h3>Sahara Team India Fanwear Round Neck Jersey</h3>
-    <p class="subtle">T-Shirts | Nike</p>
-    <p class="price"><span>Før</span> DKK 1595,-</p>
-    <div class="discounted">
-    <p>Nu DKK 1560,-</p>
-    <p>-34%</p>
-    </div>
-    <a href="produkt.html">Læs mere</a>
-    </article>
-*/
+
 /*
 {
   "id": 1163,
@@ -54,15 +54,4 @@ function showProduct(product) {
   "brandname": "Nike",
   "soldout": 0
 }
-*/
-
-/*
-  if (product.soldout) {
-    //produktet er udsolgt
-    copy.querySelector("article").classList.add("soldOut");
-  } else if (product.discount) {
-    copy.querySelector("article").classList.add("onSale");
-  } else {
-    copy.querySelector("article").classList.add("soldOut", "onSale");
-  }
 */
