@@ -7,10 +7,14 @@ fetch("https://kea-alt-del.dk/t7/api/products/" + id)
 
 function showProduct(product) {
   console.log(product);
+  document.querySelector(".breadcrumbs .brands").textContent = product.brandname;
+  document.querySelector(".breadcrumbs .displayname").textContent = product.productdisplayname;
   document.querySelector(".purchaseBox h3").textContent = product.productdisplayname;
   document.querySelector(".info .modelnavn").textContent = product.productdisplayname;
   document.querySelector(".purchaseBox .brand").textContent = product.brandname;
   document.querySelector(".purchaseBox .category").textContent = product.articletype;
+  document.querySelector(".info .farve").textContent = product.basecolour;
+  document.querySelector(".info .inventarnummer").textContent = product.id;
   document.querySelector("img").src = `https://kea-alt-del.dk/t7/images/webp/640/${product.id}.webp`;
 }
 
