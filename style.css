@@ -15,6 +15,7 @@
   padding: 2em;
   color: white;
   background-color: blueviolet;
+  transition: 0.3s;
 }
 
 .kategoriliste a:hover {
@@ -25,19 +26,20 @@
 /*produktliste*/
 .produktliste main {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 290px));
+  grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
 }
 .produktliste main h2 {
   grid-column: 1/-1;
 }
 .produktliste article h3 {
-  font-size: 1.3rem;
+  margin-top: 0.5rem;
+  font-size: 1.5rem;
   flex-grow: 3;
 }
 .produktliste article > * {
   margin: 0;
-  font-size: 1rem;
+  font-size: 1.4rem;
 }
 .subtle {
   color: var(--color);
@@ -45,6 +47,7 @@
 .produktliste article {
   display: flex;
   flex-direction: column;
+  margin-bottom: 5rem;
 }
 .produktliste article.soldOut img {
   opacity: 0.5;
@@ -73,13 +76,12 @@
 .produktliste article button {
   margin-top: auto;
 }
-.produktliste article {
-  margin-bottom: 1rem;
-}
+
 .discounted p:last-child {
   background: blueviolet;
-  padding: 0.2rem;
+  padding: 0.2rem 0.6rem;
   color: white;
+  font-size: 1.2rem;
 }
 
 /*Product*/
