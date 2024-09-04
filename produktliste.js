@@ -13,15 +13,14 @@ function showProduct(product) {
   const template = document.querySelector("#smallProductTemplate").content;
   //lav en kopi
   const copy = template.cloneNode(true);
-  const imgurl = `https://kea-alt-del.dk/t7/images/webp/640/${product.id}.webp`;
   //ændre indhold
+  const imgurl = `https://kea-alt-del.dk/t7/images/webp/640/${product.id}.webp`;
   copy.querySelector("img").src = imgurl;
   copy.querySelector("img").alt = product.productdisplayname;
   copy.querySelector("h3").textContent = product.productdisplayname;
   copy.querySelector(".articletype").textContent = product.articletype;
   copy.querySelector(".brand").textContent = product.brandname;
-  copy.querySelector(".price").textContent = product.price + ",-";
-  copy.querySelector(".discounted p").textContent = "-" + product.discount + "%";
+  copy.querySelector(".price span").textContent = product.price;
   copy.querySelector(".read-more").setAttribute("href", `produkt.html?id=${product.id}`);
 
   //produkt er udsolgt
@@ -31,7 +30,8 @@ function showProduct(product) {
 
   if (product.discount) {
     copy.querySelector("article").classList.add("onSale");
-    // copy.querySelector(".discounted p").textContent = Math.round(product.price - (product.price * product.discount) / 100);
+    copy.querySelector(".discounted p span").textContent = Math.round(product.price - (product.price * product.discount) / 100);
+    copy.querySelector(".discounted p+p span").textContent = product.discount;
   }
 
   //appende
